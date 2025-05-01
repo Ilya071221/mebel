@@ -1,0 +1,84 @@
+/* Общие настройки */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff8f0;
+    color: #3e342f;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Шапка */
+.header {
+    background-color: #fbe4c6;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    margin: 0;
+    font-size: 28px;
+    color: #44342a;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #3e342f;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ba5d2c;
+}
+
+/* Контент */
+main {
+    padding: 40px 0;
+}
+
+/* Футер */
+.footer {
+    background-color: #fbe4c6;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    color: #77695f;
+    border-top: 1px solid #e2c9b1;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+}

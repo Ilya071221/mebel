@@ -1,0 +1,36 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h2 style="text-align: center;">Галерея наших работ</h2>
+
+<div style="display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; margin-top: 30px;">
+    {% for item in photos %}
+    <div style="width: 250px; background-color: #fff2e1; padding: 10px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transform: rotate({{ forloop.counter|add:'-4' }}deg);">
+        <img src="{% static item.src %}" alt="Работа {{ forloop.counter }}" style="width: 100%; border-radius: 8px; height: 170px; object-fit: cover;">
+        <p style="font-style: italic; font-size: 14px; margin-top: 8px;">“{{ item.review }}”</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+<hr style="margin: 40px 0;">
+
+<h2 style="text-align: center;">Оставьте отзыв о нашей мебели</h2>
+<form method="post" style="max-width: 600px; margin: 0 auto;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отправить</button>
+</form>
+
+<h3 style="text-align: center; margin-top: 40px;">Последние отзывы:</h3>
+<ul style="max-width: 600px; margin: auto;">
+    {% for r in reviews %}
+        <li style="margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+            <strong>{{ r.name }}</strong> — {{ r.rating }}★<br>
+            <em>{{ r.comment }}</em>
+        </li>
+    {% empty %}
+        <li>Пока нет отзывов.</li>
+    {% endfor %}
+</ul>

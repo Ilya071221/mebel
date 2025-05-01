@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section style="text-align: center; padding: 40px;">
+    <h2>О владельце</h2>
+
+    <div style="max-width: 700px; margin: 0 auto; font-size: 18px; line-height: 1.6; background-color: #fff8f0; padding: 20px; border-radius: 10px;">
+        <p><strong>Имя:</strong> Илья Домашников</p>
+        <p>
+            Основатель магазина "Домашний уют", дизайнер интерьеров с более чем 15-летним опытом.
+            Его любовь к комфорту и домашнему теплу вдохновила на создание уникального пространства,
+            где каждый предмет мебели помогает сделать дом по-настоящему уютным.
+        </p>
+        <p>
+            В своей работе Илья ориентируется на качество, практичность и атмосферу.
+            Он лично отбирает коллекции мебели, чтобы каждая деталь радовала глаз и служила долгие годы.
+        </p>
+
+        <a href="{% static 'main/about_us_domashniy_uyut.pdf' %}" download
+           style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #d87d4a; color: white; text-decoration: none; border-radius: 8px;">
+            Скачать информацию о владельце (PDF)
+        </a>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section style="text-align: center;">
+    <video width="80%" controls style="border-radius: 10px; margin-bottom: 20px;">
+        <source src="{% static 'main/promo.mp4' %}" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
+
+    <h2>О магазине</h2>
+    <p style="max-width: 700px; margin: 0 auto; font-size: 18px; line-height: 1.6;">
+        Добро пожаловать в «Домашний уют» — место, где тепло и комфорт встречаются с современным дизайном.
+        Мы подбираем для вас мебель, которая создаёт атмосферу уюта, вдохновляя на отдых и семейные вечера.
+        Наш приоритет — качество, стиль и доступность. Почувствуйте уют в каждом уголке вашего дома!
+    </p>
+</section>
+{% endblock %}

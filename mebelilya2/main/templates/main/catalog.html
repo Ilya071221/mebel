@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h2 style="text-align: center;">Каталог мебели</h2>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 30px;">
+    {% for item in products %}
+    <div style="background-color: #fff3e6; border-radius: 10px; width: 250px; padding: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); text-align: center;">
+        <img src="{% static item.photo %}" alt="{{ item.name }}" style="width: 100%; height: 170px;">
+        <h3>{{ item.name }}</h3>
+        <table style="margin: 0 auto; font-size: 14px; color: #4a3f35;">
+            <tr><td><strong>Цена:</strong></td><td>{{ item.price }}</td></tr>
+            <tr><td><strong>Материал:</strong></td><td>{{ item.material }}</td></tr>
+        </table>
+    </div>
+    {% endfor %}
+</div>
+
+<hr style="margin: 50px 0;">
+
+<h2 style="text-align: center;">Виды мебели</h2>
+<ul style="display: flex; justify-content: space-around; max-width: 900px; margin: 0 auto;">
+    <li>
+        Мягкая мебель
+        <ul>
+            <li>Диваны</li>
+            <li>Кресла</li>
+        </ul>
+    </li>
+    <li>
+        Корпусная мебель
+        <ul>
+            <li>Шкафы</li>
+            <li>Комоды</li>
+        </ul>
+    </li>
+    <li>
+        Обеденная зона
+        <ul>
+            <li>Столы</li>
+            <li>Стулья</li>
+        </ul>
+    </li>
+</ul>
+
+<hr style="margin: 50px 0;">
+
+<h2 style="text-align: center;">Сравнение популярных моделей</h2>
+<table style="width: 90%; margin: 0 auto; border-collapse: collapse; background-color: #fff8ef;">
+    <thead>
+        <tr style="background-color: #ffe0c0;">
+            <th rowspan="2" style="padding: 10px; border: 1px solid #ccc;">Модель</th>
+            <th colspan="2" style="padding: 10px; border: 1px solid #ccc;">Характеристики</th>
+            <th rowspan="2" style="padding: 10px; border: 1px solid #ccc;">Цена</th>
+        </tr>
+        <tr style="background-color: #fff3e6;">
+            <th style="padding: 10px; border: 1px solid #ccc;">Материал</th>
+            <th style="padding: 10px; border: 1px solid #ccc;">Цвет</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;">Диван "Комфорт"</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">Велюр</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">Бежевый</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">120 000 ₸</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;">Кресло "Релакс"</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">Эко-кожа</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">Коричневый</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">65 000 ₸</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;">Стол "Семейный"</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">Массив дерева</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">Орех</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">89 000 ₸</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr style="margin: 50px 0;">
+
+<h2 style="text-align: center;">Интерактивная кнопка</h2>
+<div style="text-align: center;">
+    <button id="clickButton" style="padding: 10px 20px; font-size: 16px; background-color: #e6b87d; border: none; border-radius: 5px; cursor: pointer;">Нажми меня</button>
+    <p id="message">Привет, мир!</p>
+</div>
+
+<h2 style="text-align: center; margin-top: 50px;">Счётчик кликов</h2>
+<div style="text-align: center;">
+    <button id="incrementButton" style="padding: 10px 20px; font-size: 16px; background-color: #e6b87d; border: none; border-radius: 5px; cursor: pointer;">Увеличить счётчик</button>
+    <p id="counter">Счётчик: 0</p>
+</div>
+
+<hr style="margin: 50px 0;">
+
+<h2 style="text-align: center;">Форма обратной связи</h2>
+<form id="contactForm" style="max-width: 500px; margin: 0 auto;">
+    <label for="name">Имя:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="message">Сообщение:</label><br>
+    <textarea id="messageField" name="message" required></textarea><br><br>
+
+    <button type="submit" style="background-color: #e6b87d; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Отправить</button>
+</form>
+<p id="errorMessage" style="color: red; text-align: center;"></p>
+
+<script>
+    document.getElementById('clickButton').addEventListener('click', function() {
+        document.getElementById('message').textContent = 'Вы нажали на кнопку!';
+    });
+
+    let count = 0;
+    document.getElementById('incrementButton').addEventListener('click', function() {
+        count++;
+        document.getElementById('counter').textContent = 'Счётчик: ' + count;
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        let errorMessage = '';
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('messageField').value;
+
+        if (!name || !email || !message) {
+            errorMessage = 'Пожалуйста, заполните все поля.';
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errorMessage = 'Введите корректный email.';
+        } else if (message.length < 10) {
+            errorMessage = 'Сообщение должно содержать хотя бы 10 символов.';
+        }
+
+        if (errorMessage) {
+            document.getElementById('errorMessage').textContent = errorMessage;
+        } else {
+            document.getElementById('errorMessage').textContent = '';
+            alert('Форма отправлена успешно!');
+        }
+    });
+</script>
+{% endblock %}
